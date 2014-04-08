@@ -10,10 +10,8 @@ namespace ProjectEuler
     {
         public string Run()
         {
-            return (from i in GenerateFibonacci()
-                    where i % 2 == 0
-                    select i).TakeWhile(i => i < 4000000)
-                    .Sum().ToString();
+            return GenerateFibonacci().Where(i => i % 2 == 0)
+                .TakeWhile(i => i < 4000000).Sum().ToString();
         }
 
         IEnumerable<int> GenerateFibonacci()

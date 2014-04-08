@@ -56,6 +56,7 @@ namespace Runner
             while (!int.TryParse(input, out result))
             {
                 Console.WriteLine(message);
+                input = Console.ReadLine();
             }
             return result;
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Runner
 {
-    class TestSolve
+    class Problem0
     {
         public string Run()
         {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Runner
+namespace ProjectEuler
 {
     public class Program
     {
@@ -16,7 +16,7 @@ namespace Runner
             {
                 string puzzleName = string.Format("Problem{0}",
                     PromptForInt("Enter the problem number:"));
-                var objHandle = GetPuzzleSafely(puzzleName);
+                var objHandle = GetObjectSafely(puzzleName);
                 if (objHandle != null)
                 {
                     stopwatch.Start();
@@ -35,12 +35,14 @@ namespace Runner
             }
         }
 
-        private static object GetPuzzleSafely(string puzzle)
+        private static object GetObjectSafely(string puzzle)
         {
             object objHandle;
             try
             {
-                objHandle = Activator.CreateInstance("Runner", puzzle);
+                objHandle = Activator.
+                    CreateInstance(null, string.Format("ProjectEuler.{0}", puzzle))
+                    .Unwrap();
             }
             catch (Exception e)
             {

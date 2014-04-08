@@ -7,7 +7,7 @@
     <ProjectGuid>{BCF4A71E-F30A-4A78-80DA-2F4BC62FEE09}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Runner</RootNamespace>
+    <RootNamespace>ProjectEuler</RootNamespace>
     <AssemblyName>Runner</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

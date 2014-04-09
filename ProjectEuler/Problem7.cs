@@ -10,7 +10,7 @@ namespace ProjectEuler
     {
         public string Run()
         {
-            return InfiniteRange(2).Where(x=>MRPrimalityTester.IsPrime(x))
+            return PrimeHelper.GeneratePrimes()
                 .Take(10001).Last().ToString();
         }
 

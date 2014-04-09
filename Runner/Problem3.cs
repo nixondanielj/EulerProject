@@ -14,7 +14,7 @@ namespace ProjectEuler
             int max = 0;
             for(int i = 2; i < Math.Sqrt(number); i++)
             {
-                if (number % i == 0)// && IsPrime(i))
+                if (number % i == 0 && MRPrimalityTester.IsPrime(i))
                 {
                     max = i;
                 }

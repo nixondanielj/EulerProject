@@ -10,7 +10,7 @@ namespace ProjectEuler
     {
         public string Run()
         {
-            return PrimeHelper.GeneratePrimes()
+            return SequenceHelper.GeneratePrimes()
                 .Take(10001).Last().ToString();
         }
     }

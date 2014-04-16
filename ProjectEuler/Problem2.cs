@@ -10,22 +10,10 @@ namespace ProjectEuler
     {
         public string Run()
         {
-            return GenerateFibonacci().Where(i => i % 2 == 0)
+            return SequenceHelper.GenerateFibonacci().Where(i => i % 2 == 0)
                 .TakeWhile(i => i < 4000000).Sum().ToString();
         }
 
-        IEnumerable<int> GenerateFibonacci()
-        {
-            int a = 1, b = 2;
-            yield return a;
-            yield return b;
-            while (true)
-            {
-                int swap = b;
-                b += a;
-                a = swap;
-                yield return b;
-            }
-        }
+        
     }
 }

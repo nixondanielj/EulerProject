@@ -7,19 +7,9 @@ using System.Threading.Tasks;
 
 namespace ProjectEuler
 {
-    public static class PrimeHelper
+    public static class PrimeTester
     {
-        public static IEnumerable<int> GeneratePrimes(int start = 2)
-        {
-            while (true)
-            {
-                if (IsPrime(start))
-                {
-                    yield return start;
-                }
-                start++;
-            }
-        }
+        
 
         public static bool IsPrime(long n)
         {

@@ -11,7 +11,7 @@ namespace ProjectEuler
         public string Run()
         {
             long l = 0;
-            return PrimeHelper.GeneratePrimes()
+            return SequenceHelper.GeneratePrimes()
                 .TakeWhile(p => p < 2000000)
                 .Aggregate(l, (a,b)=> a+b)
                 .ToString();

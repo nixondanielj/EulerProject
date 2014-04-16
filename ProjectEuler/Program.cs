@@ -22,7 +22,7 @@ namespace ProjectEuler
             {"9", "31875000"},
             {"10", "142913828922"},
             {"11", "70600674"},
-            {"12", "76576500"}
+            //{"12", "76576500"}
         };
         public static void Main(string[] args)
         {

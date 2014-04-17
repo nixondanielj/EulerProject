@@ -8,6 +8,12 @@ namespace ProjectEuler
 {
     public static class SequenceHelper
     {
+        public static IEnumerable<int> GenerateTriangleNumbers()
+        {
+            int start = 0;
+            return GenerateSequence(1).Select(i => start += i);
+        }
+
         public static IEnumerable<int> GeneratePrimes(int start = 2)
         {
             return GenerateSequence(start).Where(i=>PrimeTester.IsPrime(i));

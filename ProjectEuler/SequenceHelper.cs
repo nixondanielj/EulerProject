@@ -8,6 +8,23 @@ namespace ProjectEuler
 {
     public static class SequenceHelper
     {
+        public static IEnumerable<long> GenerateCollatzSequence(long start)
+        {
+            yield return start;
+            while (start != 1)
+            {
+                if (start % 2 == 0)
+                {
+                    start /= 2;
+                }
+                else
+                {
+                    start = start * 3 + 1;
+                }
+                yield return start;
+            }
+        }
+
         public static IEnumerable<int> GenerateTriangleNumbers()
         {
             int start = 0;

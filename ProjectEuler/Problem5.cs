@@ -11,7 +11,7 @@ namespace ProjectEuler
         public string Run()
         {
             var divisors = new int[] { 19, 17, 16, 13, 11, 9, 7, 5, 4, 3, 2 };
-            for (int product = 21; true; product++)
+            for (int product = 19; true; product+=19)
             {
                 if (divisors.All(d => product % d == 0))
                 {

@@ -10,10 +10,9 @@ namespace ProjectEuler
     {
         public string Run()
         {
-            long l = 0;
             return SequenceHelper.GeneratePrimes()
                 .TakeWhile(p => p < 2000000)
-                .Aggregate(l, (a,b)=> a+b)
+                .Aggregate(new long(), (a,b)=> a+b)
                 .ToString();
         }
     }

@@ -42,7 +42,7 @@ namespace ProjectEuler
 
         public static IEnumerable<int> GeneratePrimes(int start = 2)
         {
-            return GenerateSequence(start).Where(i=>PrimeTester.IsPrime(i));
+            return GenerateSequence(start).AsParallel().AsOrdered().Where(i=>PrimeTester.IsPrime(i));
         }
 
         public static IEnumerable<int> GenerateFibonacci()

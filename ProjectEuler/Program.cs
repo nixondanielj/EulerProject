@@ -29,7 +29,8 @@ namespace ProjectEuler
             {"16", "1366"},
             {"17", "21124"},
             {"18", "1074"},
-            {"19", "171"}
+            {"19", "171"},
+            {"20", "648"}
         };
         public static void Main(string[] args)
         {

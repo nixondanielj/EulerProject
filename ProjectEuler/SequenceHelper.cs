@@ -8,6 +8,15 @@ namespace ProjectEuler
 {
     public static class SequenceHelper
     {
+        public static IEnumerable<T> GenerateSequence<T>(T start, Func<T, T> transform)
+        {
+            while (true)
+            {
+                yield return start;
+                start = transform(start);
+            }
+        }
+
         public static IEnumerable<long> GenerateCollatzSequence(long start)
         {
             yield return start;

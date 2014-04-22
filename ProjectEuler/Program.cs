@@ -9,7 +9,7 @@ namespace ProjectEuler
 {
     public class Program
     {
-        static Dictionary<string, string> tests = new Dictionary<string, string>()
+        public static Dictionary<string, string> tests = new Dictionary<string, string>()
         {
             {"1", "233168"},
             {"2","4613732"},
@@ -35,37 +35,15 @@ namespace ProjectEuler
         {
             while (true)
             {
-                string puzzleName = string.Format("Problem{0}",
-                    PromptForInt("Enter the problem number:"));
-                if (puzzleName == "Problem0")
+                int problem = PromptForInt("Enter a problem number or 0 for testing:");
+                if (problem == 0)
                 {
                     RunTests();
                 }
                 else
                 {
-                    ExecuteProblem(puzzleName);
-                    Console.WriteLine("Press any key to continue");
-                    Console.ReadKey();
+                    PrintResult(ExecuteProblem(problem));
                 }
-            }
-        }
-
-        private static void ExecuteProblem(string puzzleName)
-        {
-            var stopwatch = new Stopwatch();
-            var obj = GetObjectSafely(puzzleName);
-            if (obj != null)
-            {
-                stopwatch.Start();
-                Console.WriteLine("Result: {0}",
-                    obj.GetType().GetMethod("Run").Invoke(obj, null));
-                stopwatch.Stop();
-                Console.WriteLine("Took {0} seconds", stopwatch.Elapsed.TotalSeconds);
-                stopwatch.Reset();
-            }
-            else
-            {
-                Console.WriteLine("{0} was not a valid puzzle", puzzleName);
             }
         }
 
@@ -73,18 +51,38 @@ namespace ProjectEuler
         {
             foreach (var pair in tests)
             {
-                var obj = GetObjectSafely(
-                    string.Format("Problem{0}", pair.Key)
-                    );
-                if (obj.GetType().GetMethod("Run").Invoke(obj, null).ToString() == pair.Value)
-                {
-                    Console.WriteLine("Problem {0} passed", pair.Key);
-                }
-                else
-                {
-                    Console.WriteLine("Problem {0} failed", pair.Key);
-                }
+                Result result = ExecuteProblem(int.Parse(pair.Key));
+                string passOrFail = result.Value == pair.Value ? "passed" : "failed";
+                PrintResult(result, passOrFail);
             }
+        }
+
+        private static void PrintResult(Result result, string passOrFail = "untested")
+        {
+            Console.WriteLine("Problem {0} {1} with: {2} in {3} seconds",
+                    result.Problem, passOrFail, result.Value, result.Time);
+        }
+
+        private static double TimeForSeconds(Action action)
+        {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            action();
+            stopwatch.Stop();
+            return stopwatch.Elapsed.TotalSeconds;
+        }
+
+        private static Result ExecuteProblem(int number)
+        {
+            Result result = new Result() { Problem = number };
+            var obj = GetObjectSafely(string.Format("Problem{0}", number));
+            if (obj != null)
+            {
+                result.Time = TimeForSeconds(
+                    () => result.Value = obj.GetType().GetMethod("Run").Invoke(obj, null).ToString()
+                    );
+            }
+            return result;
         }
 
         private static object GetObjectSafely(string puzzle)
@@ -96,7 +94,7 @@ namespace ProjectEuler
                     CreateInstance(null, string.Format("ProjectEuler.{0}", puzzle))
                     .Unwrap();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 objHandle = null;
             }
@@ -114,5 +112,12 @@ namespace ProjectEuler
             }
             return result;
         }
+    }
+
+    class Result
+    {
+        public int Problem { get; set; }
+        public double Time { get; set; }
+        public string Value { get; set; }
     }
 }

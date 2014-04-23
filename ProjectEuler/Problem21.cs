@@ -13,23 +13,12 @@ namespace ProjectEuler
             return Enumerable.Range(1, 9999)
                 .Where(i => 
                 {
-                    int sum = GetDivisors(i).Sum();
-                    return sum < 10000 && GetDivisors(sum).Sum() == i && i != sum;
+                    int sum = MathHelper.GetDivisors(i).Sum();
+                    return sum < 10000 && MathHelper.GetDivisors(sum).Sum() == i && i != sum;
                 })
                 .Sum().ToString();
         }
 
-        private IEnumerable<int> GetDivisors(int n)
-        {
-            yield return 1;
-            for (int i = 2; i < Math.Sqrt(n); i++)
-            {
-                if (n % i == 0)
-                {
-                    yield return i;
-                    yield return n / i;
-                }
-            }
-        }
+        
     }
 }

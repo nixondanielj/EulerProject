@@ -11,12 +11,16 @@ namespace ProjectEuler
         public static IEnumerable<int> GetDivisors(int n)
         {
             yield return 1;
-            for (int i = 2; i < Math.Sqrt(n); i++)
+            double sqrt = Math.Sqrt(n);
+            for (int i = 2; i <= sqrt; i++)
             {
                 if (n % i == 0)
                 {
                     yield return i;
-                    yield return n / i;
+                    if (i != sqrt)
+                    {
+                        yield return n / i;
+                    }
                 }
             }
         }

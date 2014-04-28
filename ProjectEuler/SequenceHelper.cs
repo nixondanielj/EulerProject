@@ -66,5 +66,10 @@ namespace ProjectEuler
                 yield return start++;
             }
         }
+
+        internal static IEnumerable<int> GenerateAbundantNumbers()
+        {
+            return GenerateSequence(2).Where(i => MathHelper.GetDivisors(i).Sum() > i);
+        }
     }
 }

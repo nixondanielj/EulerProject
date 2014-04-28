@@ -13,7 +13,7 @@ namespace ProjectEuler
         {
             var abundantNumbers = SequenceHelper.GenerateAbundantNumbers().TakeWhile(i => i <= LIMIT).ToList();
             var abundantSums = new HashSet<int>(
-                abundantNumbers.Select(a => abundantNumbers.Select(b => a + b)).SelectMany(i => i)
+                abundantNumbers.AsParallel().Select(a => abundantNumbers.Select(b => a + b)).SelectMany(i => i)
                 );
             return SequenceHelper.GenerateSequence(1).TakeWhile(i => i <= LIMIT)
                 .Where(i => !abundantSums.Contains(i)).Sum().ToString();

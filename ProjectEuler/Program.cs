@@ -33,10 +33,12 @@ namespace ProjectEuler
             {"20", "648"},
             {"21", "31626"},
             {"22", "871198282"},
-            {"23", "4179871"}
+            {"23", "4179871"},
+            {"24", "2783915460"}
         };
         public static void Main(string[] args)
         {
+            new Problem24().Run();
             while (true)
             {
                 int problem = PromptForInt("Enter a problem number or 0 for testing:");

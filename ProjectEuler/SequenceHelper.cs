@@ -48,7 +48,7 @@ namespace ProjectEuler
 
         public static IEnumerable<BigInteger> GenerateFibonacci()
         {
-            BigInteger a = 1, b = 2;
+            BigInteger a = 1, b = 1;
             yield return a;
             yield return b;
             while (true)

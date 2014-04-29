@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,14 +46,14 @@ namespace ProjectEuler
             return GenerateSequence(start).AsParallel().AsOrdered().Where(i=>PrimeTester.IsPrime(i));
         }
 
-        public static IEnumerable<int> GenerateFibonacci()
+        public static IEnumerable<BigInteger> GenerateFibonacci()
         {
-            int a = 1, b = 2;
+            BigInteger a = 1, b = 2;
             yield return a;
             yield return b;
             while (true)
             {
-                int swap = b;
+                BigInteger swap = b;
                 b += a;
                 a = swap;
                 yield return b;

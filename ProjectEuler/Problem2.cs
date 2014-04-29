@@ -11,9 +11,9 @@ namespace ProjectEuler
         public string Run()
         {
             return SequenceHelper.GenerateFibonacci().Where(i => i % 2 == 0)
-                .TakeWhile(i => i < 4000000).Sum().ToString();
+                .TakeWhile(i => i < 4000000).Aggregate((a, b) => a + b).ToString();
         }
 
-        
+
     }
 }

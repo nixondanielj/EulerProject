@@ -38,7 +38,6 @@ namespace ProjectEuler
         };
         public static void Main(string[] args)
         {
-            new Problem24().Run();
             while (true)
             {
                 int problem = PromptForInt("Enter a problem number or 0 for testing:");

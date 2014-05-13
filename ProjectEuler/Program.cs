@@ -39,7 +39,8 @@ namespace ProjectEuler
             {"26", "983"},
             {"27", "-59231"},
             {"28", "669171001"},
-            {"29", "9183"}
+            {"29", "9183"},
+            {"30", "443839"}
         };
         public static void Main(string[] args)
         {
